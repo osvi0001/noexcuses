@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SignUp from "../components/SignUp.astro";
 import signup from "../assets/images/signup.jpg";
 import Prices from "../components/Prices.astro";
 ---
@@ -10,76 +11,98 @@ import Prices from "../components/Prices.astro";
       <img src={signup.src} alt="people in a team" />
       <div class="signup-wrapper">
         <div class="info-box">
-          <h1>No<span class="italic">MORE </span> Excuses, <br />Just Sign Up!</h1>
-          <p class="p2">Book sessions, manage your bundles and join the community.</p>
+          <h1>
+            No<span class="italic">MORE </span> Excuses - Just Sign Up!
+          </h1>
+          <p class="p2">
+            Book sessions, manage your bundles and join the community.
+          </p>
         </div>
         <form class="sign-up-form">
-          <label> <input id="name" type="text" placeholder="NAME:" required /></label>
-
-          <label> <input id="email" type="text" placeholder="EMAIL:" required /></label>
+          <label>
+            <input id="name" type="text" placeholder="NAME:" required /></label
+          >
 
           <label>
-            <input id="password" type="password" placeholder="PASSWORD:" required />
+            <input
+              id="email"
+              type="text"
+              placeholder="EMAIL:"
+              required
+            /></label
+          >
+
+          <label>
+            <input
+              id="password"
+              type="password"
+              placeholder="PASSWORD:"
+              required
+            />
           </label>
 
           <a href=""><button id="signin-btn" type="submit">SIGN UP</button></a>
-          <p class="p2">ALREADY HAVE AN ACCOUNT? <span class="underline">LOG IN</span></p>
+          <p class="p2">
+            ALREADY HAVE AN ACCOUNT? <span class="underline">LOG IN</span>
+          </p>
         </form>
       </div>
     </section>
-    <section class="prices">
-      <h1>BUNDLES & PRICES</h1>
-      <p class="p2">
-        We offer our prices in simple bundles. <br />
-        To buy one, just sign up or log in.
-      </p>
-      <div class="bundles-grid">
-        <div class="bundles">
-          <Prices
-            text1="1 // ONE NIGHT STAND"
-            text2="DKK 170,-"
-            text3="A short affair. If you like us and want to see us again, we are also ready for a slightly longer relationship."
-            knap="PURCHASE"
-            text4="NB: Valid for 50 days from the date of purchase."
-          />
+    <section class="prices_section">
+      <section class="prices">
+        <h1>BUNDLES & PRICES</h1>
+        <p class="p2">
+          We offer our prices in simple bundles. <br />
+          To buy one, just sign up or log in.
+        </p>
+        <div class="bundles-grid">
+          <div class="bundles">
+            <Prices
+              text1="1 // ONE NIGHT STAND"
+              text2="DKK 170,-"
+              text3="A short affair. If you like us and want to see us again, we are also ready for a slightly longer relationship."
+              knap="PURCHASE"
+              text4="NB: Valid for 50 days from the date of purchase."
+            />
+          </div>
+          <div class="bundles">
+            <Prices
+              text1="5 PACK // FRIENDS WITH BENIFITS"
+              text2="DKK 850,-"
+              text3="This is for those of you who are ready to get to know us and would like to see each other a little more often. "
+              knap="PURCHASE"
+              text4="NB: Valid for 50 days from the date of purchase."
+            />
+          </div>
+          <div class="bundles">
+            <Prices
+              text1="10 PACK // ENTANGLEMENT"
+              text2="DKK 1599,-"
+              text3="For those of you who are ready to see each other a little more seriously, but not quite ready for the real commitment yet."
+              knap="PURCHASE"
+              text4="NB: Valid for 50 days from the date of purchase."
+            />
+          </div>
+          <div class="bundles">
+            <Prices
+              text1="20 PACK // RELATIONSHIP"
+              text2="DKK 2999,-"
+              text3="This is for you who are looking for a serious and real relationship, and are ready to take the next step."
+              knap="PURCHASE"
+              text4="NB: Valid for 50 days from the date of purchase."
+            />
+          </div>
+          <div class="bundles">
+            <Prices
+              text1="30 PACK - MARRIAGE"
+              text2="DKK 4299,-"
+              text3="This is almost like a marriage. We both said YES to each other.But we never have liver pâté days, and we will do our part every day to make us healthier, stronger, better and (possibly) happier together."
+              knap="PURCHASE"
+              text4="NB: Valid for 50 days from the date of purchase."
+            />
+          </div>
         </div>
-        <div class="bundles">
-          <Prices
-            text1="5 PACK // FRIENDS WITH BENIFITS"
-            text2="DKK 850,-"
-            text3="This is for those of you who are ready to get to know us and would like to see each other a little more often. "
-            knap="PURCHASE"
-            text4="NB: Valid for 50 days from the date of purchase."
-          />
-        </div>
-        <div class="bundles">
-          <Prices
-            text1="10 PACK // ENTANGLEMENT"
-            text2="DKK 1599,-"
-            text3="For those of you who are ready to see each other a little more seriously, but not quite ready for the real commitment yet."
-            knap="PURCHASE"
-            text4="NB: Valid for 50 days from the date of purchase."
-          />
-        </div>
-        <div class="bundles">
-          <Prices
-            text1="20 PACK // RELATIONSHIP"
-            text2="DKK 2999,-"
-            text3="This is for you who are looking for a serious and real relationship, and are ready to take the next step."
-            knap="PURCHASE"
-            text4="NB: Valid for 50 days from the date of purchase."
-          />
-        </div>
-        <div class="bundles">
-          <Prices
-            text1="30 PACK - MARRIAGE"
-            text2="DKK 4299,-"
-            text3="This is almost like a marriage. We both said YES to each other.But we never have liver pâté days, and we will do our part every day to make us healthier, stronger, better and (possibly) happier together."
-            knap="PURCHASE"
-            text4="NB: Valid for 50 days from the date of purchase."
-          />
-        </div>
-      </div>
+      </section>
     </section>
   </main>
 </Layout>
@@ -186,7 +209,7 @@ import Prices from "../components/Prices.astro";
     display: inline-block;
   }
 
-  .prices {
+  .prices_section {
     background-color: var(--beige-color);
     padding: 20px;
     width: 100%;
@@ -205,7 +228,11 @@ import Prices from "../components/Prices.astro";
     margin: 2rem 0rem;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
+    .prices {
+      max-width: 1100px;
+      margin: auto;
+    }
     h1 {
       text-transform: uppercase;
       color: var(--text-color);
@@ -217,7 +244,7 @@ import Prices from "../components/Prices.astro";
       max-width: 1100px;
       display: flex;
       align-items: flex-start;
-      justify-content: center;
+      /* justify-content: center; */
       gap: 60px;
       text-align: left;
     }
@@ -230,7 +257,7 @@ import Prices from "../components/Prices.astro";
     }
 
     .signup-wrapper {
-      max-width: 380px;
+      max-width: 600px;
       width: 100%;
     }
 

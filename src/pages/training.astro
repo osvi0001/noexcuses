@@ -1,6 +1,8 @@
 ---
 import Font from "astro/components/Font.astro";
 import Layout from "../layouts/Layout.astro";
+import Faq from "../components/Faq.astro";
+import SignUp from "../components/SignUp.astro";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -8,6 +10,10 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <main>
     <header></header>
+    <section>
+      <SignUp />
+    </section>
+
     <body>
       <section class="hero">
         <div>
@@ -35,8 +41,8 @@ import Layout from "../layouts/Layout.astro";
             <h2>LEGS FOCUS - SMK</h2>
             <strong>The training includes:</strong>
             <ul>
-              <li>Hill sprints</li>
-              <li>Body weight exercises</li>
+              <li><p>Hill sprints</p></li>
+              <li><p>Body weight exercises</p></li>
             </ul>
 
             <p>
@@ -55,8 +61,8 @@ import Layout from "../layouts/Layout.astro";
             <h2>EVENING PUMP - NYBODER</h2>
             <strong>The training includes:</strong>
             <ul>
-              <li>Hill sprints</li>
-              <li>Body weight exercises</li>
+              <li><p>Burpees</p></li>
+              <li><p>Body weight exercises</p></li>
             </ul>
 
             <p>
@@ -75,8 +81,8 @@ import Layout from "../layouts/Layout.astro";
             <h2>OUTDOOR - BLOX</h2>
             <strong>The training includes:</strong>
             <ul>
-              <li>Hill sprints</li>
-              <li>Body weight exercises</li>
+              <li><p>250–500 meter runs</p></li>
+              <li><p>Weight lifting (various weight options)</p></li>
             </ul>
 
             <p>
@@ -95,8 +101,8 @@ import Layout from "../layouts/Layout.astro";
             <h2>FREAKY FRIDAY - OFELIA</h2>
             <strong>The training includes:</strong>
             <ul>
-              <li>Hill sprints</li>
-              <li>Body weight exercises</li>
+              <li><p>Circle training</p></li>
+              <li><p>Interval runs</p></li>
             </ul>
 
             <p>
@@ -127,32 +133,41 @@ import Layout from "../layouts/Layout.astro";
               <h3>Why Choose Outdoor Company Training?</h3>
               <ul>
                 <li>
-                  Team building: Working out together builds stronger
-                  relationships
+                  <p>
+                    Team building: Working out together builds stronger
+                    relationships
+                  </p>
                 </li>
                 <li>
-                  Fresh air & daylight: Boosts mood, productivity, and
-                  creativity
+                  <p>
+                    Fresh air & daylight: Boosts mood, productivity, and
+                    creativity
+                  </p>
                 </li>
                 <li>
-                  Professional coaching: Experienced instructors guiding safe
-                  and effective workouts
+                  <p>
+                    Professional coaching: Experienced instructors guiding safe
+                    and effective workouts
+                  </p>
                 </li>
                 <li>
-                  Flexible scheduling: Early mornings, lunch-hour, or after work
+                  <p>
+                    Flexible scheduling: Early mornings, lunch-hour, or after
+                    work
+                  </p>
                 </li>
                 <li>
-                  City-based training: Easy meet-up locations across Copenhagen
-                  - or even in your backyard
+                  <p>
+                    City-based training: Easy meet-up locations across
+                    Copenhagen - or even in your backyard
+                  </p>
                 </li>
               </ul>
               <p>
-                <strong
-                  ><em
-                    >“Our team loved it, the outdoor sessions gave us new energy
-                    and connection.” <br /> — Company Client 2024</em
-                  >
-                </strong>
+                <em
+                  >“Our team loved it, the outdoor sessions gave us new energy
+                  and connection.” <br /> — Planet Nusa Director 2024</em
+                >
               </p>
               <a href="/src/pages/signup.astro">CONTACT US TO GET STARTED</a>
             </div>
@@ -171,262 +186,257 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </section>
       </section>
-      <footer></footer>
     </body>
+  </main>
 
-    <style>
-      .SO {
-        margin-left: 20px;
+  <style>
+    .SO {
+      margin-left: 20px;
+    }
+    .hero_img {
+      max-width: 100%;
+      filter: brightness(0.5);
+    }
+    .hero_h1 {
+      color: white;
+      position: absolute;
+      transform: translate(-50%);
+      top: 12.5%;
+      left: 50%;
+    }
+    .hero_p {
+      color: white;
+      position: absolute;
+      transform: translate(-50%);
+      top: 17.5%;
+      left: 50%;
+      width: 220px;
+      text-align: center;
+    }
+    .classes {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin: 20px;
+    }
+    .classes h2 {
+      margin-top: -20px;
+    }
+    .classes div {
+      background-color: var(--beige-color);
+      padding: 10px;
+    }
+    .classes ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .classes li {
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+    .date {
+      display: flex;
+      justify-content: space-between;
+      text-align: start;
+      margin-left: -10px;
+      margin-top: -10px;
+      background-color: transparent;
+    }
+    .time {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .BOOK_CTA {
+      display: block;
+      background-color: var(--orange-color);
+      color: #fff;
+      border: none;
+      width: fit-content;
+      margin-top: 20px;
+      padding: 15px 45px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .BOOK_CTA:hover {
+      background-color: var(--darkgrey-color);
+      transition: all 0.5s ease;
+    }
+
+    .SU {
+      width: fit-content;
+      margin: auto;
+      margin-top: 30px;
+      padding: 20px 60px;
+      background-color: var(--darkgrey-color);
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .SU:hover {
+      background-color: var(--orange-color);
+      transition: all 0.5s ease;
+    }
+    .CT {
+      width: 100%;
+    }
+    .CT_img {
+      width: 100%;
+      height: 25vh;
+      object-fit: cover;
+      display: block;
+      filter: blur(0.5px) brightness(0.5);
+    }
+    .CT_hero_content {
+      margin-top: -200px;
+      position: relative;
+      padding: 20px;
+      z-index: 1;
+    }
+    .CT_hero_content p {
+      max-width: 400px;
+    }
+    .CT_hero_text {
+      position: relative;
+      z-index: 3;
+    }
+    .CT_info {
+      padding: 20px;
+    }
+    .CT_info li {
+      max-width: 350px;
+    }
+
+    .CT a {
+      display: block;
+      background-color: var(--orange-color);
+      color: #fff;
+      padding: 20px 60px;
+      width: fit-content;
+      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: auto;
+      margin-top: 30px;
+    }
+    .CT a:hover {
+      background-color: var(--darkgrey-color);
+      transition: all 0.5s ease;
+    }
+    .DT_img {
+      display: none;
+    }
+    .Testimony {
+      margin: 20px;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 100px;
+    }
+    .Testimony_show {
+      width: 100%;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+      background-color: var(--beige-color);
+      box-sizing: border-box;
+    }
+    .Testimony img {
+      width: 80px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    @media only screen and (min-width: 768px) {
+      .body {
+        max-width: 1100px;
+        margin: auto;
+      }
+      .hero {
+        display: grid;
       }
       .hero_img {
-        max-width: 100%;
-        filter: brightness(0.5);
+        width: 100vw;
+        height: fit-content;
+        object-fit: cover;
+        margin-left: calc(50% - 50vw);
       }
       .hero_h1 {
-        color: white;
-        position: absolute;
-        transform: translate(-50%);
-        top: 12.5%;
-        left: 50%;
+        margin-top: -27.5%;
+        position: relative;
+        text-align: center;
+        z-index: 1;
       }
       .hero_p {
-        color: white;
-        position: absolute;
-        transform: translate(-50%);
-        top: 17.5%;
-        left: 50%;
-        width: 220px;
+        width: 100%;
+        margin-top: -22%;
+        position: relative;
         text-align: center;
-      }
-      .classes {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        margin: 20px;
-      }
-      .classes h2 {
-        margin-top: -20px;
-      }
-      .classes div {
-        background-color: var(--beige-color);
-        padding: 10px;
-      }
-      .classes ul {
-        padding-left: 20px;
-        margin-bottom: 20px;
+        z-index: 1;
       }
 
-      .classes li {
-        margin-bottom: 6px;
-        font-size: 15px;
-      }
-      .date {
-        display: flex;
-        justify-content: space-between;
-        text-align: start;
-        margin-left: -10px;
-        margin-top: -10px;
-        background-color: transparent;
-      }
-      .time {
-        font-size: 14px;
-        font-weight: 600;
-      }
-      .BOOK_CTA {
-        display: block;
-        background-color: var(--orange-color);
-        color: #fff;
-        border: none;
-        width: fit-content;
-        margin-top: 20px;
-        padding: 12px 28px;
-        font-size: 18px;
-        font-weight: 700;
-        cursor: pointer;
-        text-decoration: none;
-      }
-
-      .SU {
-        width: fit-content;
-        margin: auto;
-        margin-top: 30px;
-        padding: 12px 28px;
-        background-color: var(--darkgrey-color);
-        border: 1px solid var(--darkgrey-color);
-        color: white;
-        text-decoration: none;
-        text-align: center;
-        margin-bottom: 50px;
-      }
       .CT {
         width: 100%;
       }
+
       .CT_img {
-        width: 100%;
-        height: 25vh;
+        width: 100vw;
+        height: 35vh;
         object-fit: cover;
-        display: block;
-        filter: blur(0.5px) brightness(0.5);
+        margin-left: calc(50% - 50vw);
       }
+      .classes {
+        grid-template-columns: 1fr 1fr;
+      }
+      .SU {
+        grid-column: 1 / -1;
+
+        text-align: center;
+      }
+
+      .Testimony img {
+        display: flex;
+        margin: auto;
+        justify-content: space-between;
+        position: relative;
+      }
+      .DT_img {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        width: 130%;
+      }
+      .DT_img img {
+        max-width: 50%;
+      }
+      .CT_info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .CT_info div:first-child {
+        display: flex;
+        flex-direction: column;
+      }
+      .CT_info a {
+        margin: 0;
+        margin-top: auto;
+      }
+
       .CT_hero_content {
-        margin-top: -200px;
+        margin-top: -300px;
         position: relative;
         padding: 20px;
         z-index: 1;
+        margin-bottom: 50px;
       }
-      .CT_hero_content p {
-        max-width: 400px;
+      .CT_hero_content span {
+        font-size: 30px;
       }
-      .CT_hero_text {
-        position: relative;
-        z-index: 3;
-      }
-      .CT_info {
-        padding: 20px;
-      }
-      .CT_info li {
-        max-width: 350px;
-      }
-
-      .CT a {
-        display: block;
-        background-color: var(--orange-color);
-        color: #fff;
-        border: none;
-        padding: 12px 28px;
-        width: fit-content;
-        font-size: 18px;
-        font-weight: 700;
-        cursor: pointer;
-        text-decoration: none;
-        text-align: center;
-        margin: auto;
-        margin-top: 30px;
-      }
-      .DT_img {
-        display: none;
-      }
-      .Testimony {
-        margin: 20px;
-        text-align: center;
-        margin-top: 30px;
-        margin-bottom: 100px;
-      }
-      .Testimony_show {
-        width: 100%;
-        padding: 30px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: nowrap;
-        background-color: var(--beige-color);
-        box-sizing: border-box;
-      }
-      .Testimony img {
-        width: 80px;
-        height: auto;
-        display: block;
-        object-fit: contain;
-      }
-
-      @media only screen and (min-width: 659px) {
-        .body {
-          max-width: 1200px;
-          margin: auto;
-        }
-        .hero {
-          display: grid;
-        }
-        .hero_img {
-          width: 100vw;
-          height: fit-content;
-          object-fit: cover;
-          margin-left: calc(50% - 50vw);
-        }
-        .hero_h1 {
-          font-size: 50px;
-          margin-top: -27.5%;
-          position: relative;
-          text-align: center;
-          z-index: 1;
-        }
-        .hero_p {
-          font-size: 22px;
-          width: 100%;
-          margin-top: -22%;
-          position: relative;
-          text-align: center;
-          z-index: 1;
-        }
-
-        .CT {
-          width: 100%;
-        }
-
-        .CT_img {
-          width: 100vw;
-          height: 35vh;
-          object-fit: cover;
-          margin-left: calc(50% - 50vw);
-        }
-        .classes {
-          grid-template-columns: 1fr 1fr;
-        }
-        .SU {
-          grid-column: 1 / -1;
-
-          text-align: center;
-        }
-        .Testimony_show {
-          width: 100%;
-          padding: 30px;
-          display: flex;
-          float: left;
-          justify-content: center;
-          gap: 20px;
-          flex-wrap: nowrap;
-          background-color: var(--beige-color);
-          box-sizing: border-box;
-          margin-bottom: 100px;
-        }
-        .Testimony img {
-          display: flex;
-          margin: auto;
-          justify-content: space-between;
-          position: relative;
-        }
-        .DT_img {
-          display: flex;
-          margin: auto;
-          justify-content: center;
-        }
-        .DT_img img {
-          max-width: 50%;
-        }
-        .CT_info {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-        }
-        .CT_info div:first-child {
-          display: flex;
-          flex-direction: column;
-        }
-        .CT_info a {
-          margin: 0;
-          margin-top: auto;
-        }
-
-        .CT_hero_content {
-          margin-top: -300px;
-          position: relative;
-          padding: 20px;
-          z-index: 1;
-          margin-bottom: 100px;
-        }
-        .CT_hero_content span {
-          font-size: 30px;
-        }
-      }
-    </style>
-  </main>
+    }
+  </style>
 </Layout>

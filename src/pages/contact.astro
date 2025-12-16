@@ -1,9 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import contact from "../assets/images/contact.jpg";
+import SignUp from "../components/SignUp.astro";
 ---
 
 <Layout>
+  <section>
+    <SignUp />
+  </section>
   <section class="contact">
     <div class="contact-container">
       <div>
@@ -15,7 +19,10 @@ import contact from "../assets/images/contact.jpg";
             Interested in personal or company training?
           </p>
 
-          <p>Fill out the form or reach out through our socials and we will contact you.</p>
+          <p>
+            Fill out the form or reach out through our socials and we will
+            contact you.
+          </p>
         </div>
 
         <form class="contact-form">
@@ -118,7 +125,7 @@ import contact from "../assets/images/contact.jpg";
   }
 
   textarea {
-    height: 120px;
+    height: 100px;
     font-family: roboto-p;
     font-size: var(--p);
     padding: 0.8rem;
@@ -131,13 +138,13 @@ import contact from "../assets/images/contact.jpg";
 
   /* COMPUTER */
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .contact-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8rem;
       align-items: start;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -151,7 +158,7 @@ import contact from "../assets/images/contact.jpg";
       width: 100%;
       height: auto;
       object-fit: cover;
-      margin-top: 100px;
+      margin-top: 140px;
     }
 
     .contact-form {

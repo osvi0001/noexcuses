@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SignUp from "../components/SignUp.astro";
 import Goodcause1 from "../assets/images/goodcause1.jpg";
 import Goodcause3 from "../assets/images/goodcause3.jpg";
 import Goodcause2 from "../assets/images/goodcause2.jpg";
@@ -8,6 +9,9 @@ import Goodcause from "../assets/images/goodcause.jpg";
 ---
 
 <Layout>
+  <section>
+    <SignUp />
+  </section>
   <section class="hero">
     <img class="Goodcause1" src={Goodcause1.src} alt="goodcause1" />
     <div class="hero-text">
@@ -15,35 +19,44 @@ import Goodcause from "../assets/images/goodcause.jpg";
       <p>Together, we make impact</p>
     </div>
   </section>
-  <section class="info">
-    <div class="info-text">
-      <h2>WHAT IS “A GOOD CAUSE”?</h2>
-      <p>NO.EXCUSES hosts/co-hosts one big charity workout every year. We gather the entire community — athletes, families, partners and companies — for a day of movement, positivity and impact. Every penny raised goes to a chosen Danish charity.</p>
-      <h2>WHY WE DO IT?</h2>
-      <p>Because fitness is more than exercise. It’s about showing up — for yourself, and for each other. At NO.EXCUSES we believe that movement creates connection, confidence and responsibility.</p>
-    </div>
-    <div>
-      <img class="Goodcause3" src={Goodcause3.src} alt="goodcause3" />
-    </div>
-  </section>
-  <div class="funds-raised">
-    <h3>Funds Raised This Year</h3>
-    <p id="count-up" data-target="173762">0 KR.</p>
-    <p>We walked 120 km on the Camino to raise funds for BørneTelefonen - and thanks to your support, we collected an amazing 173,762 DKK. Every step helped support children and young people in need.</p>
-    <a class="button" href="">JOIN US NEXT TIME</a>
-  </div>
-  <section class="galleri">
-    <div class="galleri-top">
-      <div>
-        <img class="Goodcause2" src={Goodcause2.src} alt="goodcause2" />
+  <section class="body">
+    <section class="info">
+      <div class="info-text">
+        <h2>WHAT IS “A GOOD CAUSE”?</h2>
+        <p>
+          NO.EXCUSES hosts/co-hosts one big charity workout every year. We
+          gather the entire community — athletes, families, partners and
+          companies — for a day of movement, positivity and impact. Every penny
+          raised goes to a chosen Danish charity.
+        </p>
+        <h2>WHY WE DO IT?</h2>
+        <p>
+          Because fitness is more than exercise. It’s about showing up — for
+          yourself, and for each other. At NO.EXCUSES we believe that movement
+          creates connection, confidence and responsibility.
+        </p>
       </div>
       <div>
-        <img class="Goodcause" src={Goodcause.src} alt="goodcause" />
+        <img class="Goodcause3" src={Goodcause3.src} alt="goodcause3" />
       </div>
+    </section>
+    <div class="funds-raised">
+      <h3>Funds Raised This Year</h3>
+      <p id="count-up" data-target="173762">0 KR.</p>
+      <p>
+        We walked 120 km on the Camino to raise funds for BørneTelefonen - and
+        thanks to your support, we collected an amazing 173,762 DKK. Every step
+        helped support children and young people in need.
+      </p>
+      <a class="button" href="">
+        <button>JOIN US NEXT TIME</button>
+      </a>
     </div>
-    <div class="galleri-bottom">
-      <img class="Goodcause4" src={Goodcause4.src} alt="goodcause4" />
-    </div>
+    <section class="galleri">
+      <img src={Goodcause2.src} alt="goodcause2" />
+      <img src={Goodcause.src} alt="goodcause" />
+      <img src={Goodcause4.src} alt="goodcause4" />
+    </section>
   </section>
 </Layout>
 
@@ -108,59 +121,54 @@ import Goodcause from "../assets/images/goodcause.jpg";
     margin: 20px 0;
   }
 
-  a {
-    text-decoration: none;
-    font-size: 14px;
-  }
-
-  .button {
-    display: block;
+  button {
     background-color: var(--darkgrey-color);
     color: var(--offwhite-color);
     border: none;
     padding: 20px 60px;
     margin-top: 30px;
     margin-bottom: 10px;
-    text-decoration: none;
-    align-content: center;
   }
 
-  .button:hover {
+  button:hover {
     background-color: var(--orange-color);
     color: var(--offwhite-color);
   }
 
   .galleri {
-    margin: 20px;
-  }
-
-  .galleri-top img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  /* GRID LAYOUT */
-  .galleri-top {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    margin: 20px;
   }
 
-  .galleri-bottom {
+  .galleri img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .galleri :nth-child(1) {
+    height: 300px;
+  }
+  .galleri :nth-child(2) {
+    height: 300px;
+  }
+  .galleri :nth-child(3) {
     grid-column: span 2;
-    margin-top: 20px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
+    .body {
+      max-width: 1100px;
+      margin: auto;
+    }
     .hero {
       width: 100%;
       overflow: hidden;
     }
     .hero-text {
       position: absolute;
-      top: 50%;
+      top: 45%;
       left: 40%;
       transform: translateY(-50%);
       color: white;
@@ -176,23 +184,85 @@ import Goodcause from "../assets/images/goodcause.jpg";
       margin: 25px;
       font-weight: 300;
     }
+
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1100px;
+      gap: 3em;
+      padding: 0;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .info-text {
+      margin-top: 20px;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .Goodcause3 {
+      max-height: fit-content;
+      object-fit: fill;
+    }
+    #count-up {
+      margin: auto;
+    }
+
+    .funds-raised {
+      padding: 40px;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+
+    .funds-raised p {
+      padding: 10px;
+      line-height: 1.5;
+      padding-bottom: 30px;
+      margin: auto;
+      max-width: 500px;
+    }
+
+    .galleri {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      max-width: fit-content;
+      margin: auto;
+    }
+    .galleri :nth-child(1) {
+      height: 300px;
+    }
+    .galleri :nth-child(2) {
+      height: 300px;
+    }
+
+    .galleri img {
+      width: fit-content;
+      height: 300px;
+      object-fit: contain;
+    }
+
+    .galleri :nth-child(3) {
+      grid-column: 2 / 3;
+      grid-row: 1;
+    }
   }
 </style>
-
 <script>
   const counter = document.getElementById("count-up");
   const target = parseInt(counter.dataset.target);
 
   function animateCount() {
     let current = 0;
-    const duration = 2000; // 2 sekunder
+    const duration = 4000; // 4 sekunder
     const increment = target / (duration / 16);
 
     const update = () => {
       current += increment;
 
       if (current < target) {
-        counter.textContent = Math.floor(current).toLocaleString("da-DK") + " KR.";
+        counter.textContent =
+          Math.floor(current).toLocaleString("da-DK") + " KR.";
         requestAnimationFrame(update);
       } else {
         counter.textContent = target.toLocaleString("da-DK") + " KR.";

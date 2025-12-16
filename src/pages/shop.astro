@@ -33,7 +33,6 @@ console.log(data);
           <option value="out">Out of stock</option>
         </select>
       </div>
-
       <div class="sortby-section">
         <label>Sort by:</label>
         <select id="price">
@@ -44,8 +43,14 @@ console.log(data);
       </div>
     </div>
 
-    <section>
-      {data.map((product) => <Products data={product} />)}
+    <section id="products">
+      {
+        data.map((product) => (
+          <div class="product" data-price={product.price}>
+            <Products data={product} />
+          </div>
+        ))
+      }
     </section>
   </div>
 </Layout>
@@ -95,7 +100,7 @@ console.log(data);
   }
 
   /* desktop css */
-  @media (min-width: 659px) {
+  @media (min-width: 768px) {
     section {
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -104,11 +109,26 @@ console.log(data);
 </style>
 
 <script>
-  let allData, currenDataSet;
-  document.querySelector("#price")?.addEventListener("change", showSorted);
+  const select = document.querySelector("#price");
+  const productsContainer = document.querySelector("#products");
+
+  select?.addEventListener("change", showSorted);
 
   function showSorted(event) {
-    const direction = event.target.value;
-    console.log(direction);
+    const direction = event.target.value; // lohi / hilo
+    const products = Array.from(productsContainer.querySelectorAll(".product"));
+
+    products.sort((a, b) => {
+      const priceA = parseFloat(a.dataset.price);
+      const priceB = parseFloat(b.dataset.price);
+
+      if (direction === "lohi") return priceA - priceB;
+      if (direction === "hilo") return priceB - priceA;
+      return 0;
+    });
+
+    // Fjern alle produkter og append i ny rækkefølge
+    productsContainer.innerHTML = "";
+    products.forEach((p) => productsContainer.appendChild(p));
   }
 </script>

@@ -1,0 +1,52 @@
+<section class="sign_up_link">
+  <a href="/signup">
+    <img src="/src/assets/images/SuB.svg" alt="sign up button" />
+  </a>
+</section>
+
+<style>
+  .sign_up_link {
+    position: fixed;
+    background-color: var(--darkgrey-color);
+    z-index: 4;
+    text-align: center;
+    right: 0;
+    margin-top: 50%;
+    display: none;
+  }
+  .sign_up_link img {
+    max-width: 40px;
+    padding: 5px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .sign_up_link {
+      position: fixed;
+      background-color: var(--darkgrey-color);
+      z-index: 4;
+      text-align: center;
+      right: 0;
+      margin-top: 20%;
+      display: none;
+    }
+    .sign_up_link img {
+      max-width: 50px;
+      padding: 5px;
+    }
+  }
+</style>
+
+<script>
+  const mybutton = document.getElementsByClassName("sign_up_link")[0];
+
+  window.onscroll = function () {
+    if (
+      document.body.scrollTop > 400 ||
+      document.documentElement.scrollTop > 400
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  };
+</script>

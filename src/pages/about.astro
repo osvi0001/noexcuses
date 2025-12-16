@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SignUp from "../components/SignUp.astro";
 import Image from "astro/components/Image.astro";
 import image1 from "../assets/images/about2.jpg";
 import image2 from "../assets/images/about.jpg";
@@ -9,6 +10,9 @@ import Faq from "../components/Faq.astro";
 ---
 
 <Layout>
+  <section>
+    <SignUp />
+  </section>
   <section class="grid">
     <h1>About</h1>
     <section class="about">
@@ -16,16 +20,16 @@ import Faq from "../components/Faq.astro";
     </section>
     <section class="faq">
       <Faq
-        text1="CAN I JOIN AS A BEGINNER?"
-        p1="Absolutely! Our training is beginner-friendly, and we tailor every session so you can join no matter your level."
-        text2="WHERE DO YOU TRAIN?"
-        p2="We train outdoors at different spots around the city. You’ll get the location before each session, and we always make sure it’s easy to get to."
-        text3="WHAT HAPPENS WHEN THE WEATHER IS BAD?"
-        p3="We train outside year-round — but if the weather becomes unsafe, we adjust the session or move to a safer location. You’ll always get an update beforehand."
-        text4="WHAT DO I NEED TO BRING TO TRAINING?"
-        p4="Just sportswear, good shoes, and water. That’s it! We bring everything else you need for the workout."
-        text5="DO YOU DO COMPANY TRAINING?"
-        p5="Yes we do! Contact us to set up a training plan for company or give us your bosses contact info and well handle the rest ;)"
+        text1="WHO WE ARE?"
+        p1="No Excuses is an outdoor training community based in Copenhagen. We believe that movement should feel simple, social, and fun - not intimidating. Our mission is to get people moving together, outside, with energy, honesty, and zero pressure."
+        text2="OUR PHILOSOPHY"
+        p2="We train without excuses — not to push perfection, but to build consistency. Fresh air, functional movement, and shared effort are at the core of everything we do. Training should feel good, challenge you, and leave you stronger — both physically and mentally."
+        text3="HOW WE TRAIN?"
+        p3="Our sessions combine running, bodyweight exercises, and simple equipment. Everything is scalable, so everyone can join - regardless of fitness level. We focus on movement, flow, and progress, not performance or competition."
+        text4="COMMUNITY FIRST"
+        p4="No Excuses is more than training. It’s a community built on support, inclusivity, and shared experiences. We train together, encourage each other, and believe that consistency grows stronger when you’re not doing it alone."
+        text5="A GOOD CAUSE"
+        p5="Giving back is part of who we are. Through charity workouts and events, we use movement as a way to support meaningful causes. Training together gives us the opportunity to create real impact - beyond ourselves."
       />
     </section>
   </section>
@@ -106,28 +110,54 @@ import Faq from "../components/Faq.astro";
       padding: 20px;
     }
 
-    @media (min-width: 659px) {
+    @media (min-width: 768px) {
       .grid {
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
           "image text"
           "image text";
+        margin: auto;
         margin-top: 100px;
-        padding: 20px;
+        padding: 0;
+        max-width: 1100px;
+        gap: 2em;
+      }
+      .flex {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0;
+        padding-top: 20px;
+      }
+      h2 {
+        text-align: center;
+        border-bottom: 1px solid var(--darkgrey-color);
+        max-width: 95%;
+        margin: auto;
+        margin-bottom: 30px;
       }
 
+      .about img {
+        margin-top: -20px;
+        max-width: 100%;
+      }
       h1 {
         grid-area: text;
-        margin: -50px 60px;
+        margin: -25px 0px;
+        padding: 0;
       }
 
-      /* .about {
-        grid-area: image;
-      } */
+      .about {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 100px;
+        display: block;
+      }
 
       .faq {
         grid-area: text;
-        /* margin-top: 100px; */
+        margin: 0;
+        margin-top: 20px;
+        padding: 0;
       }
       .team-container {
         display: flex;

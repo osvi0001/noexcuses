@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SignUp from "../components/SignUp.astro";
 import event1 from "../assets/images/7days.png";
 import event2 from "../assets/images/juli.png";
 import event3 from "../assets/images/portugal-retreat.png";
@@ -8,6 +9,9 @@ import event4 from "../assets/images/nusa.png";
 
 <Layout>
   <main>
+    <section>
+      <SignUp />
+    </section>
     <h1>UPCOMING EVENTS</h1>
     <div class="event-cards">
       <div class="event-wrapper">
@@ -127,7 +131,7 @@ import event4 from "../assets/images/nusa.png";
     border: 3px solid var(--darkgrey-color);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     .event-wrapper:hover .event-overlay {
       opacity: 1;
     }

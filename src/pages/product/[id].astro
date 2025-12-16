@@ -221,6 +221,149 @@ const { post } = Astro.props;
   div {
     padding: 0 10px;
   }
+
+  /* desktop css */
+  @media (min-width: 1024px) {
+    .dropdown h3 {
+      border-bottom: 1px solid #353535;
+      width: 80%;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 400;
+    }
+
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown.active .dropdown-content {
+      display: block;
+    }
+
+    .toggle {
+      font-weight: 400;
+      transition: transform 0.2s;
+    }
+
+    .dropdown.active .toggle {
+      transform: rotate(0deg);
+    }
+
+    /* singelview produkt css */
+    h2 {
+      border-bottom: 1px solid #353535;
+      width: 60%;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    section img {
+      width: 500px;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    section {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      border: 1px solid #353535;
+      justify-content: center;
+      min-width: 1200px;
+      height: auto;
+      gap: 50px;
+      margin-top: 100px;
+    }
+
+    /* chose color css */
+
+    .color-btn button {
+      width: 25px;
+      height: 25px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .color-btn button:nth-child(2) {
+      background: #000000;
+      border: 1px solid transparent;
+    }
+    .color-btn button:nth-child(3) {
+      background: #47382b;
+      border: 1px solid transparent;
+    }
+    .color-btn button:nth-child(4) {
+      background: #ffff;
+      border: 1px solid black;
+    }
+
+    .color-btn button.active {
+      border: 1px solid #ff712a;
+    }
+
+    /* chose a size css */
+    .size button {
+      padding: 8px 16px;
+      border: 1px solid #353535;
+      background: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    /* når knappen er aktiv */
+    .size button.active {
+      border: 1px solid #ff712a;
+    }
+    /* number ctas */
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #353535;
+      width: fit-content;
+    }
+
+    .quantity button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 10px 10px;
+      color: #353535;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .quantity .number {
+      font-size: 16px;
+      font-weight: bold;
+      width: 10px;
+      text-align: center;
+    }
+
+    .purchase {
+      background-color: #ff712a;
+      border: none;
+      color: #fdf8ee;
+      padding: 15px 30px;
+    }
+    .purchase:hover {
+      background-color: #353535;
+    }
+  }
 </style>
 
 <script>

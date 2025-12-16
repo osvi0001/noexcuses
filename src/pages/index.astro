@@ -2,6 +2,9 @@
 import Font from "astro/components/Font.astro";
 import Layout from "../layouts/Layout.astro";
 import Faq from "../components/Faq.astro";
+import SignUp from "../components/SignUp.astro";
+import træning1 from "../assets/images/index.jpg";
+import video from "../assets/images/noexcuses-video.mp4";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -9,9 +12,12 @@ import Faq from "../components/Faq.astro";
 <Layout>
   <main>
     <header></header>
+    <section>
+      <SignUp />
+    </section>
     <section class="forside_hero">
-      <video autoplay loop plays-inline class="bg-clip">
-        <source src="/src/assets/images/noexcuses-video.mp4" />
+      <video autoplay loop muted playsinline class="bg-clip">
+        <source src={video} type="video/mp4" />
       </video>
       <div class="hero_content">
         <div>
@@ -31,11 +37,13 @@ import Faq from "../components/Faq.astro";
           </svg>
         </div>
 
-        <div><p>Stronger together, 365 days a year</p></div>
+        <div>
+          <p class="underoverskrift">Stronger together, 365 days a year</p>
+        </div>
 
         <div class="hero_CTA">
-          <a href="#" class="primary_CTA">SIGN UP</a>
-          <a href="#" class="alternative_CTA">OUR TRAINING</a>
+          <a href="/signup" class="primary_CTA">SIGN UP</a>
+          <a href="/training" class="alternative_CTA">OUR TRAINING</a>
         </div>
       </div>
     </section>
@@ -55,16 +63,16 @@ import Faq from "../components/Faq.astro";
           </p>
           <h3>HOW TO GET STARTED</h3>
           <p>
-            1. Sign up <br />
+            1. Sign up and pick your bundle <br />
             2. Pick your session <br />
             3. Just show up - bring yourself, a mat, a water bottle and, most importantly,
             a smile. We’ll take care of the rest.
           </p>
 
-          <a class="CTA_started" href="#">SIGN UP TO GET STARTED</a>
+          <a class="CTA_started" href="/signup">VIEW BUNDLES & GET STARTED</a>
         </div>
         <div class="index_img">
-          <img src="/src/assets/images/index.jpg" alt="team training" />
+          <img src={træning1.src} alt="people training" />
         </div>
       </section>
 
@@ -75,14 +83,14 @@ import Faq from "../components/Faq.astro";
           <p>
             Once a year, we come together for a special workout supported by our
             sponsors. All proceeds are donated to a chosen charity.
-            <a href="#">READ MORE</a>
+            <a href="/a-good-cause">READ MORE</a>
           </p>
         </div>
 
         <span class="line"></span>
         <div class="AGC_stats">
           <h3>Funds Raised This Year</h3>
-          <h2 style="color: var(--orange-color);">173.762 KR.</h2>
+          <p id="count-up" data-target="173762">0 KR.</p>
         </div>
       </section>
       <section class="FAQ">
@@ -101,7 +109,7 @@ import Faq from "../components/Faq.astro";
             text4="WHAT DO I NEED TO BRING TO TRAINING?"
             text5="DO YOU OFFER COMPANY TRAINING?"
             p1="Yes! All levels are more than welcome. We adapt the training to your level so everyone can join — no matter your experience."
-            p2="We train outdoors at different locations in Copenhagen. You can always see the current schedule and meeting points"
+            p2="We train outdoors at different locations in Copenhagen. You can always see the current schedule and meeting points under TRAINING"
             p3="There is no such thing as bad weather, only wrong clothes. We train outside all year round — rain, wind or sun, NO EXCUSES! "
             p4="Just bring yourself, a water bottle, and a good mood, and we’ll take care of the rest. For some sessions, a mat is useful, but it’s not required."
             p5="Yes we do! Contact us to set up a training plan for company or give us your bosses contact info and we’ll handle the rest ;)"
@@ -112,9 +120,19 @@ import Faq from "../components/Faq.astro";
   </main>
 
   <style>
+    #count-up {
+      font-size: 48px;
+      font-weight: bold;
+      color: var(--orange-color);
+      margin: 20px 0;
+    }
     body {
       background-color: var(--bg-color);
     }
+    .underoverskrift {
+      margin-top: -20px;
+    }
+
     .forside_hero {
       width: 100%;
       position: relative;
@@ -150,6 +168,7 @@ import Faq from "../components/Faq.astro";
       transform: translate(-50%, -50%);
       top: 60%;
       left: 50%;
+      margin-top: -90px;
     }
 
     .hero_CTA a {
@@ -243,6 +262,7 @@ import Faq from "../components/Faq.astro";
     }
 
     .line {
+      display: block;
       width: 80%;
       height: 1.5px;
       background-color: #000000;
@@ -252,25 +272,21 @@ import Faq from "../components/Faq.astro";
       padding: 20px;
     }
 
-    @media only screen and (min-width: 659px) {
+    @media only screen and (min-width: 768px) {
       h2 {
-        font-size: 37px;
         margin: 0;
       }
       h3 {
-        font-size: 26px;
         margin: 0;
       }
-      p {
-        font-size: 20px;
-      }
+
       .intro_grid {
         padding: 20px;
         line-height: 200%;
       }
 
       .body {
-        max-width: 1200px;
+        max-width: 1100px;
         margin: auto;
       }
       .hero_content {
@@ -296,7 +312,6 @@ import Faq from "../components/Faq.astro";
         top: 46%;
         left: 50%;
         color: white;
-        font-size: 25px;
         width: 500px;
       }
       .hero_CTA {
@@ -384,6 +399,45 @@ import Faq from "../components/Faq.astro";
         display: grid;
         grid-template-columns: 1fr 1fr;
       }
+      .FAQ h2 {
+        margin-top: 30px;
+      }
     }
   </style>
+  <script>
+    const counter = document.getElementById("count-up");
+    const target = parseInt(counter.dataset.target);
+
+    function animateCount() {
+      let current = 0;
+      const duration = 2000; // 2 sekunder
+      const increment = target / (duration / 16);
+
+      const update = () => {
+        current += increment;
+
+        if (current < target) {
+          counter.textContent =
+            Math.floor(current).toLocaleString("da-DK") + " KR.";
+          requestAnimationFrame(update);
+        } else {
+          counter.textContent = target.toLocaleString("da-DK") + " KR.";
+        }
+      };
+
+      update();
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          animateCount();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(counter);
+  </script>
 </Layout>
