@@ -1,0 +1,278 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const endpoint =
+    "https://yiiqdouriasazhyrfuzt.supabase.co/rest/v1/products?select=*&order=id.asc";
+  const key =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlpaXFkb3VyaWFzYXpoeXJmdXp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NjI1MzAsImV4cCI6MjA4MDQzODUzMH0.lJrTTSqLOahcej2EIV52_-JESNjj2KOV1ux7FIDf34E";
+
+  const option = {
+    method: "GET",
+    headers: {
+      apikey: key,
+    },
+  };
+  const response = await fetch(endpoint, option);
+  const data = await response.json();
+
+  return data.map((post) => {
+    return {
+      params: { id: post.id },
+      props: { post },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+---
+
+<Layout>
+  <div class="wrapper">
+    <section>
+      <img
+        src={`https://yiiqdouriasazhyrfuzt.supabase.co/storage/v1/object/public/merch/${post.image1}`}
+        alt="produkt billede"
+      />
+      <div>
+        <h2 class="info">{post.title}</h2>
+        <p class="info">{post.price}</p>
+        <div class="color-btn">
+          <p>CHOOSE COLOR:</p>
+          <button></button>
+          <button></button>
+          <button></button>
+        </div>
+        <div class="size">
+          <p>CHOSE A SIZE</p>
+          <button>S</button>
+          <button>M</button>
+          <button>L</button>
+        </div>
+        <div class="actions">
+          <div class="quantity">
+            <button class="minus">−</button>
+            <span class="number">1</span>
+            <button class="plus">+</button>
+          </div>
+          <button class="purchase">PURCHASE</button>
+        </div>
+        <div class="dropdown">
+          <h3>
+            {post.care_title}
+            <span class="toggle">+</span>
+          </h3>
+          <div class="dropdown-content">
+            <p>{post.material1}</p>
+            <ul>
+              <li>{post.info1}</li>
+              <li>{post.info2}</li>
+            </ul>
+            <p>{post.material2}</p>
+            <ul>
+              <li>{post.info3}</li>
+              <li>{post.info4}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  /* dropdown css */
+  .dropdown h3 {
+    border-bottom: 1px solid #353535;
+    width: 80%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 400;
+  }
+
+  .dropdown-content {
+    display: none;
+    margin-bottom: 100px;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  .toggle {
+    font-weight: 400;
+    transition: transform 0.2s;
+  }
+
+  .dropdown.active .toggle {
+    transform: rotate(0deg);
+  }
+
+  /* singelview produkt css */
+  h2 {
+    border-bottom: 1px solid #353535;
+    width: 60%;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  section img {
+    width: 100%;
+    height: auto;
+  }
+
+  section {
+    border: 1px solid #353535;
+    max-width: 350px;
+    margin-top: 100px;
+  }
+
+  .info {
+    padding: 0 10px;
+  }
+
+  /* chose color css */
+
+  .color-btn button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .color-btn button:nth-child(2) {
+    background: #000000;
+    border: 1px solid transparent;
+  }
+  .color-btn button:nth-child(3) {
+    background: #47382b;
+    border: 1px solid transparent;
+  }
+  .color-btn button:nth-child(4) {
+    background: #ffff;
+    border: 1px solid black;
+  }
+  .color-btn button.active {
+    border: 1px solid #ff712a;
+  }
+
+  /* chose a size css */
+  .size button {
+    padding: 8px 16px;
+    border: 1px solid #353535;
+    background: none;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  /* når knappen er aktiv */
+  .size button.active {
+    border: 1px solid #ff712a;
+  }
+  /* number ctas */
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+  }
+
+  .quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #353535;
+    width: fit-content;
+  }
+
+  .quantity button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 10px;
+    color: #353535;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+
+  .quantity .number {
+    font-size: 16px;
+    font-weight: bold;
+    width: 10px;
+    text-align: center;
+  }
+
+  .purchase {
+    background-color: #ff712a;
+    border: none;
+    color: #fdf8ee;
+    padding: 15px 30px;
+  }
+  .purchase:hover {
+    background-color: #353535;
+  }
+  div {
+    padding: 0 10px;
+  }
+</style>
+
+<script>
+  /* chose a size js */
+  const sizeContainer = document.querySelector(".size");
+  const sizeButtons = sizeContainer.querySelectorAll("button");
+
+  sizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      sizeButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
+
+  /* chose a color js */
+  const colorContainer = document.querySelector(".color-btn");
+  const colorButtons = colorContainer.querySelectorAll("button");
+
+  colorButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      colorButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
+
+  /* number cta */
+  const counter = document.querySelector(".quantity");
+  const number = counter.querySelector(".number");
+  const minus = counter.querySelector(".minus");
+  const plus = counter.querySelector(".plus");
+
+  let count = 1;
+
+  minus.addEventListener("click", () => {
+    if (count > 1) {
+      count--;
+      number.textContent = count;
+    }
+  });
+
+  plus.addEventListener("click", () => {
+    count++;
+    number.textContent = count;
+  });
+
+  // dropdown singelview
+  document.querySelectorAll(".dropdown h3").forEach((header) => {
+    header.addEventListener("click", () => {
+      const dropdown = header.parentElement;
+      dropdown.classList.toggle("active");
+      const toggle = header.querySelector(".toggle");
+      toggle.textContent = dropdown.classList.contains("active") ? "-" : "+";
+    });
+  });
+</script>

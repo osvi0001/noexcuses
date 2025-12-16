@@ -1,48 +1,86 @@
+/* fontface */
+
 @font-face {
-  font-family: roboto p;
-  src: url(../assets/fonte/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf);
+  font-family: "roboto-p";
+  src: url("../assets/fonte/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf")
+    format("truetype");
   font-style: normal;
 }
 
 @font-face {
-  font-family: roboto overskrift;
-  src: url(../assets/fonte/Roboto_Condensed/static/RobotoCondensed-SemiBold.ttf);
-  font-style: light;
+  font-family: "roboto-overskrift";
+  src: url("../assets/fonte/Roboto_Condensed/static/RobotoCondensed-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: roboto h3;
-  src: url(../assets/fonte/Roboto_Condensed/static/RobotoCondensed-SemiBoldItalic.ttf);
+  font-family: "roboto-h3";
+  src: url("../assets/fonte/Roboto_Condensed/static/RobotoCondensed-SemiBoldItalic.ttf")
+    format("truetype");
+  font-style: italic;
 }
 
+/* variabler */
 :root {
+  /* Baggrund og tekstfarver */
   --bg-color: #fdf8ee;
   --text-color: #353535;
+
+  /* Farver */
+  --orange-color: #ff712a;
+  --darkgrey-color: #353535;
+  --lightgrey-color: #5d5d5d;
+  --offwhite-color: #fdf8ee;
+  --beige-color: #ede7da;
+
+  /* TYPOGRAFI */
+  --h1: clamp(2rem, 1.2rem + 3vw, 3rem); /* 32px → 48px */
+  --h2: clamp(1.5rem, 1rem + 2vw, 2.25rem); /* 24px → 36px */
+  --h3: clamp(1.25rem, 0.9rem + 1.5vw, 1.75rem); /* 20px → 28px */
+  --h4: clamp(1rem, 0.8rem + 1vw, 1.25rem); /* 16px → 20px */
+  --p: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); /* 16px → 18px */
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+/* TYPOGRAFI STYLES */
+
+h1 {
+  font-size: var(--h1);
+  font-family: "roboto-overskrift", sans-serif;
+}
+h2 {
+  font-size: var(--h2);
+  font-family: "roboto-overskrift", sans-serif;
+}
+h3 {
+  font-size: var(--h3);
+  font-family: "roboto-h3", sans-serif;
+}
+h4 {
+  font-size: var(--h4);
+  font-family: "roboto-overskrift", sans-serif;
+}
 p {
+  font-size: var(--p);
+  font-family: "roboto-p", sans-serif;
+}
+p,
+.p2,
+input {
+  font-family: "roboto-p";
+}
+
+/* Generelle tekst-elementer */
+label,
+a,
+button {
+  font-family: "roboto-overskrift", sans-serif;
   color: var(--text-color);
 }
 
+/* Ekstra klasse til sekundær tekst */
 .p2 {
-  color: #5d5d5d;
-}
-
-p,
-.p2 {
-  font-family: roboto p;
-}
-
-h1,
-h2 {
-  font-family: roboto overskrift;
-}
-h3 {
-  font-family: roboto h3;
+  color: var(--lightgrey-color);
+  font-family: "roboto-p", sans-serif;
 }

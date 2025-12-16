@@ -1,0 +1,216 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Goodcause1 from "../assets/images/goodcause1.jpg";
+import Goodcause3 from "../assets/images/goodcause3.jpg";
+import Goodcause2 from "../assets/images/goodcause2.jpg";
+import Goodcause4 from "../assets/images/goodcause4.jpg";
+import Goodcause from "../assets/images/goodcause.jpg";
+---
+
+<Layout>
+  <section class="hero">
+    <img class="Goodcause1" src={Goodcause1.src} alt="goodcause1" />
+    <div class="hero-text">
+      <h1>A GOOD CAUSE</h1>
+      <p>Together, we make impact</p>
+    </div>
+  </section>
+  <section class="info">
+    <div class="info-text">
+      <h2>WHAT IS “A GOOD CAUSE”?</h2>
+      <p>NO.EXCUSES hosts/co-hosts one big charity workout every year. We gather the entire community — athletes, families, partners and companies — for a day of movement, positivity and impact. Every penny raised goes to a chosen Danish charity.</p>
+      <h2>WHY WE DO IT?</h2>
+      <p>Because fitness is more than exercise. It’s about showing up — for yourself, and for each other. At NO.EXCUSES we believe that movement creates connection, confidence and responsibility.</p>
+    </div>
+    <div>
+      <img class="Goodcause3" src={Goodcause3.src} alt="goodcause3" />
+    </div>
+  </section>
+  <div class="funds-raised">
+    <h3>Funds Raised This Year</h3>
+    <p id="count-up" data-target="173762">0 KR.</p>
+    <p>We walked 120 km on the Camino to raise funds for BørneTelefonen - and thanks to your support, we collected an amazing 173,762 DKK. Every step helped support children and young people in need.</p>
+    <a class="button" href="">JOIN US NEXT TIME</a>
+  </div>
+  <section class="galleri">
+    <div class="galleri-top">
+      <div>
+        <img class="Goodcause2" src={Goodcause2.src} alt="goodcause2" />
+      </div>
+      <div>
+        <img class="Goodcause" src={Goodcause.src} alt="goodcause" />
+      </div>
+    </div>
+    <div class="galleri-bottom">
+      <img class="Goodcause4" src={Goodcause4.src} alt="goodcause4" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-text {
+    position: absolute;
+    bottom: 40%;
+    left: 35%;
+    transform: translateY(0);
+    color: white;
+  }
+
+  .hero-text h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .hero-text p {
+    font-size: 12px;
+    margin: 8px 0 0;
+    font-weight: 300;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .info {
+    padding: 30px;
+  }
+
+  .info-text {
+    line-height: 1.5;
+  }
+
+  .funds-raised {
+    background: var(--beige-color);
+    padding: 40px 20px;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .funds-raised h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  #count-up {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--orange-color);
+    margin: 20px 0;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .button {
+    display: block;
+    background-color: var(--darkgrey-color);
+    color: var(--offwhite-color);
+    border: none;
+    padding: 20px 60px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    align-content: center;
+  }
+
+  .button:hover {
+    background-color: var(--orange-color);
+    color: var(--offwhite-color);
+  }
+
+  .galleri {
+    margin: 20px;
+  }
+
+  .galleri-top img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* GRID LAYOUT */
+  .galleri-top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .galleri-bottom {
+    grid-column: span 2;
+    margin-top: 20px;
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      width: 100%;
+      overflow: hidden;
+    }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      transform: translateY(-50%);
+      color: white;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin: 25px;
+      font-weight: 300;
+    }
+  }
+</style>
+
+<script>
+  const counter = document.getElementById("count-up");
+  const target = parseInt(counter.dataset.target);
+
+  function animateCount() {
+    let current = 0;
+    const duration = 2000; // 2 sekunder
+    const increment = target / (duration / 16);
+
+    const update = () => {
+      current += increment;
+
+      if (current < target) {
+        counter.textContent = Math.floor(current).toLocaleString("da-DK") + " KR.";
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = target.toLocaleString("da-DK") + " KR.";
+      }
+    };
+
+    update();
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        animateCount();
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.4 }
+  );
+
+  observer.observe(counter);
+</script>

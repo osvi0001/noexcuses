@@ -1,0 +1,283 @@
+---
+import Layout from "../layouts/Layout.astro";
+import signup from "../assets/images/signup.jpg";
+import Prices from "../components/Prices.astro";
+---
+
+<Layout>
+  <main>
+    <section class="sign-up">
+      <img src={signup.src} alt="people in a team" />
+      <div class="signup-wrapper">
+        <div class="info-box">
+          <h1>No<span class="italic">MORE </span> Excuses, <br />Just Sign Up!</h1>
+          <p class="p2">Book sessions, manage your bundles and join the community.</p>
+        </div>
+        <form class="sign-up-form">
+          <label> <input id="name" type="text" placeholder="NAME:" required /></label>
+
+          <label> <input id="email" type="text" placeholder="EMAIL:" required /></label>
+
+          <label>
+            <input id="password" type="password" placeholder="PASSWORD:" required />
+          </label>
+
+          <a href=""><button id="signin-btn" type="submit">SIGN UP</button></a>
+          <p class="p2">ALREADY HAVE AN ACCOUNT? <span class="underline">LOG IN</span></p>
+        </form>
+      </div>
+    </section>
+    <section class="prices">
+      <h1>BUNDLES & PRICES</h1>
+      <p class="p2">
+        We offer our prices in simple bundles. <br />
+        To buy one, just sign up or log in.
+      </p>
+      <div class="bundles-grid">
+        <div class="bundles">
+          <Prices
+            text1="1 // ONE NIGHT STAND"
+            text2="DKK 170,-"
+            text3="A short affair. If you like us and want to see us again, we are also ready for a slightly longer relationship."
+            knap="PURCHASE"
+            text4="NB: Valid for 50 days from the date of purchase."
+          />
+        </div>
+        <div class="bundles">
+          <Prices
+            text1="5 PACK // FRIENDS WITH BENIFITS"
+            text2="DKK 850,-"
+            text3="This is for those of you who are ready to get to know us and would like to see each other a little more often. "
+            knap="PURCHASE"
+            text4="NB: Valid for 50 days from the date of purchase."
+          />
+        </div>
+        <div class="bundles">
+          <Prices
+            text1="10 PACK // ENTANGLEMENT"
+            text2="DKK 1599,-"
+            text3="For those of you who are ready to see each other a little more seriously, but not quite ready for the real commitment yet."
+            knap="PURCHASE"
+            text4="NB: Valid for 50 days from the date of purchase."
+          />
+        </div>
+        <div class="bundles">
+          <Prices
+            text1="20 PACK // RELATIONSHIP"
+            text2="DKK 2999,-"
+            text3="This is for you who are looking for a serious and real relationship, and are ready to take the next step."
+            knap="PURCHASE"
+            text4="NB: Valid for 50 days from the date of purchase."
+          />
+        </div>
+        <div class="bundles">
+          <Prices
+            text1="30 PACK - MARRIAGE"
+            text2="DKK 4299,-"
+            text3="This is almost like a marriage. We both said YES to each other.But we never have liver pâté days, and we will do our part every day to make us healthier, stronger, better and (possibly) happier together."
+            knap="PURCHASE"
+            text4="NB: Valid for 50 days from the date of purchase."
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  .sign-up {
+    margin: 50px;
+  }
+
+  input {
+    font-family: roboto-p;
+    font-size: var(--p);
+  }
+
+  .p2 {
+    font-size: var(--p);
+    text-transform: uppercase;
+    padding-top: 10px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    color: var(--text-color);
+    margin-bottom: 0;
+    line-height: 30px;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
+  .underline {
+    font-weight: 800;
+    border-bottom: 1.5px solid var(--darkgrey-color);
+  }
+
+  .sign-up-form label {
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+
+  .sign-up-form input,
+  textarea {
+    width: 100%;
+    border: 1.5px solid var(--darkgrey-color);
+    padding: 0.8rem;
+    font-size: 14px;
+  }
+
+  #signin-btn {
+    margin-top: 1rem;
+    background-color: var(--orange-color);
+    color: var(--offwhite-color);
+
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #signin-btn:hover {
+    background-color: var(--darkgrey-color);
+    transition: all 0.5s ease;
+  }
+
+  textarea {
+    height: 120px;
+  }
+
+  .sign-up {
+    text-align: center;
+    line-height: 20px;
+    align-items: center;
+  }
+
+  .sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .signup-wrapper {
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .sign-up img {
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .info-box {
+    border-bottom: 1.5px solid var(--darkgrey-color);
+    display: inline-block;
+  }
+
+  .prices {
+    background-color: var(--beige-color);
+    padding: 20px;
+    width: 100%;
+  }
+
+  .bundles {
+    background-color: var(--offwhite-color);
+  }
+
+  .bundles-p {
+    font-style: italic;
+  }
+
+  .bundles {
+    padding: 1rem 2rem;
+    margin: 2rem 0rem;
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      text-transform: uppercase;
+      color: var(--text-color);
+      margin-bottom: 30px;
+      line-height: 45px;
+    }
+    .sign-up {
+      margin: 50px auto;
+      max-width: 1100px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 60px;
+      text-align: left;
+    }
+
+    .sign-up img {
+      display: block;
+      width: 100%;
+      max-width: 550px;
+      height: auto;
+    }
+
+    .signup-wrapper {
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .sign-up-form {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+      margin-top: 1.5rem;
+    }
+
+    .sign-up-form label {
+      width: 100%;
+    }
+
+    #signin-btn {
+      align-self: flex-start;
+      margin-top: 1rem;
+    }
+
+    .p2 {
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-box {
+      border-bottom: 1.5px solid var(--darkgrey-color);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    #signin-btn {
+      font-size: 18px;
+    }
+    .bundles-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+
+    .bundles {
+      padding: 1.8rem 2rem;
+      flex: 0 0 calc(50% - 1.25rem); /* to kolonner */
+      margin: 0rem 0rem;
+    }
+  }
+
+  .bundles:last-child {
+    flex: 0 0 100%;
+  }
+</style>

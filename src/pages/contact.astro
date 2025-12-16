@@ -1,0 +1,161 @@
+---
+import Layout from "../layouts/Layout.astro";
+import contact from "../assets/images/contact.jpg";
+---
+
+<Layout>
+  <section class="contact">
+    <div class="contact-container">
+      <div>
+        <div class="info">
+          <h1>GET IN TOUCH</h1>
+          <p>
+            Do you have any questions?<br />
+            Do you want to collaborate on an event?<br />
+            Interested in personal or company training?
+          </p>
+
+          <p>Fill out the form or reach out through our socials and we will contact you.</p>
+        </div>
+
+        <form class="contact-form">
+          <label>
+            <input type="text" placeholder="NAME:" />
+          </label>
+
+          <label>
+            <input type="email" placeholder="E-MAIL:" />
+          </label>
+
+          <label>
+            <textarea placeholder="MESSAGE:"></textarea>
+          </label>
+
+          <a href="">
+            <button>SUBMIT</button>
+          </a>
+        </form>
+      </div>
+      <div>
+        <img class="contact-image" src={contact.src} alt="people running" />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .info {
+    border-bottom: 1.5px solid var(--darkgrey-color);
+    margin-bottom: 30px;
+    display: inline-block;
+  }
+  .contact {
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    margin: 50px;
+  }
+
+  .contact-container {
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+  }
+
+  p {
+    line-height: 1.5;
+    margin-bottom: 1.3rem;
+  }
+
+  .contact-form label,
+  .contact-form textarea {
+    display: block;
+    margin-bottom: 1.2rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .contact-form textarea {
+    border: 1.5px solid black;
+  }
+
+  input {
+    font-family: roboto-p;
+    font-size: var(--p);
+    padding: 0.8rem;
+    width: 100%;
+    border: 1.5px solid black;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  button {
+    background-color: var(--orange-color);
+    color: var(--offwhite-color);
+    border: none;
+    padding: 20px 60px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    align-content: center;
+  }
+
+  button:hover {
+    background-color: var(--darkgrey-color);
+    color: var(--offwhite-color);
+  }
+
+  textarea {
+    height: 120px;
+    font-family: roboto-p;
+    font-size: var(--p);
+    padding: 0.8rem;
+  }
+
+  .contact-image {
+    width: 100%;
+    height: auto;
+  }
+
+  /* COMPUTER */
+
+  @media (min-width: 1024px) {
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin-top: 100px;
+    }
+
+    .contact-form {
+      align-items: flex-start;
+    }
+  }
+</style>

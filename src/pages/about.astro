@@ -1,0 +1,141 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+import image1 from "../assets/images/about2.jpg";
+import image2 from "../assets/images/about.jpg";
+import image3 from "../assets/images/about1.jpg";
+import image4 from "../assets/images/about3.jpg";
+import Faq from "../components/Faq.astro";
+---
+
+<Layout>
+  <section class="grid">
+    <h1>About</h1>
+    <section class="about">
+      <Image src={image1} alt="" />
+    </section>
+    <section class="faq">
+      <Faq
+        text1="CAN I JOIN AS A BEGINNER?"
+        p1="Absolutely! Our training is beginner-friendly, and we tailor every session so you can join no matter your level."
+        text2="WHERE DO YOU TRAIN?"
+        p2="We train outdoors at different spots around the city. You’ll get the location before each session, and we always make sure it’s easy to get to."
+        text3="WHAT HAPPENS WHEN THE WEATHER IS BAD?"
+        p3="We train outside year-round — but if the weather becomes unsafe, we adjust the session or move to a safer location. You’ll always get an update beforehand."
+        text4="WHAT DO I NEED TO BRING TO TRAINING?"
+        p4="Just sportswear, good shoes, and water. That’s it! We bring everything else you need for the workout."
+        text5="DO YOU DO COMPANY TRAINING?"
+        p5="Yes we do! Contact us to set up a training plan for company or give us your bosses contact info and well handle the rest ;)"
+      />
+    </section>
+  </section>
+  <section class="flex">
+    <h2>MEET THE TEAM</h2>
+    <div class="team-container">
+      <div class="team-member">
+        <Image src={image2} alt="coach k" />
+        <div class="text-overlay">
+          <p>FOUNDER AND COACH</p>
+          <p>COACH K</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <Image src={image3} alt="coach k" />
+        <div class="text-overlay">
+          <p>AMALIE “A”</p>
+        </div>
+      </div>
+      <div class="team-member">
+        <Image src={image4} alt="coach k" />
+        <div class="text-overlay">
+          <p>COACH</p>
+          <p>LEO</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .about,
+    h1 {
+      padding: 20px;
+    }
+    .about img {
+      margin-top: -50px;
+    }
+
+    h2 {
+      text-align: center;
+      border-bottom: 1px solid var(--darkgrey-color);
+    }
+
+    .flex {
+      background-color: var(--beige-color);
+      padding: 20px;
+      margin: 20px;
+    }
+    .flex img {
+      margin-bottom: 100px;
+    }
+
+    .team-member {
+      position: relative;
+      display: inline-block;
+    }
+
+    .text-overlay {
+      position: absolute;
+      bottom: 100px;
+      left: 10px;
+      color: var(--offwhite-color);
+    }
+
+    .faq {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    @media (min-width: 659px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "image text"
+          "image text";
+        margin-top: 100px;
+        padding: 20px;
+      }
+
+      h1 {
+        grid-area: text;
+        margin: -50px 60px;
+      }
+
+      /* .about {
+        grid-area: image;
+      } */
+
+      .faq {
+        grid-area: text;
+        /* margin-top: 100px; */
+      }
+      .team-container {
+        display: flex;
+        justify-content: space-around;
+      }
+      .team-member {
+        width: 30%;
+      }
+    }
+  </style>
+</Layout>

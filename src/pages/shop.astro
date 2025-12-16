@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Products from "../components/Products.astro";
+import { optional } from "astro:schema";
+
+const endpoint = "https://yiiqdouriasazhyrfuzt.supabase.co/rest/v1/products?select=*&order=id.asc";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlpaXFkb3VyaWFzYXpoeXJmdXp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NjI1MzAsImV4cCI6MjA4MDQzODUzMH0.lJrTTSqLOahcej2EIV52_-JESNjj2KOV1ux7FIDf34E";
+
+const option = {
+  method: "GET",
+  headers: {
+    apikey: key,
+  },
+};
+
+const data = await fetch(endpoint, option).then((res) => res.json());
+console.log(data);
+---
+
+<Layout>
+  <div class="container">
+    <div class="overskrift">
+      <span>SUPPORT OUR BRAND</span>
+      <h1>BY WEARING IT</h1>
+    </div>
+    <div class="sort">
+      <div class="filter-section">
+        <label>Filter:</label>
+        <select>
+          <option value="">Availability</option>
+          <option value="in">In stock</option>
+          <option value="out">Out of stock</option>
+        </select>
+      </div>
+
+      <div class="sortby-section">
+        <label>Sort by:</label>
+        <select id="price">
+          <option value="test">Price</option>
+          <option value="lohi">Low - High</option>
+          <option value="hilo">High - Low</option>
+        </select>
+      </div>
+    </div>
+
+    <section>
+      {data.map((product) => <Products data={product} />)}
+    </section>
+  </div>
+</Layout>
+
+<style>
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    margin-top: 150px;
+    gap: 10px;
+  }
+
+  .container {
+    max-width: 1250px;
+    margin: auto;
+  }
+
+  .overskrift {
+    margin-top: 100px;
+    margin-bottom: -50px;
+    padding: 10px;
+  }
+
+  .overskrift h1 {
+    border-bottom: 1px solid #353535;
+    margin-top: auto;
+  }
+  .sort {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: -100px;
+    padding: 20px;
+  }
+
+  .sort select {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  /* desktop css */
+  @media (min-width: 659px) {
+    section {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+</style>
+
+<script>
+  let allData, currenDataSet;
+  document.querySelector("#price")?.addEventListener("change", showSorted);
+
+  function showSorted(event) {
+    const direction = event.target.value;
+    console.log(direction);
+  }
+</script>
